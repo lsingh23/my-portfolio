@@ -1,6 +1,6 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
@@ -8,6 +8,6 @@ const nextConfig: NextConfig = {
   },
   basePath: process.env.NODE_ENV === 'production' ? '/my-portfolio' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/my-portfolio/' : '',
-};
+}
 
-export default nextConfig;
+module.exports = nextConfig
