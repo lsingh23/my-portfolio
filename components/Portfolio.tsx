@@ -15,6 +15,8 @@ const Portfolio: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 
+  //testing deploy
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
