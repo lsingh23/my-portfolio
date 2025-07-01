@@ -9,7 +9,6 @@ import EducationSection from './EducationSection';
 import ProjectsSection from './ProjectsSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
-import GlobalStyles from './GlobalStyles';
 
 const Portfolio: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -45,7 +44,6 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
-      <GlobalStyles />
       
       {/* Scroll Progress Bar */}
       <div 

@@ -1,8 +1,10 @@
 import React from 'react';
 
 const GlobalStyles: React.FC = () => {
-  return (
-    <style jsx global>{`
+  React.useEffect(() => {
+    // Inject styles directly into the document head
+    const style = document.createElement('style');
+    style.textContent = `
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -54,8 +56,15 @@ const GlobalStyles: React.FC = () => {
         transition: width 0.3s ease;
         z-index: 1000;
       }
-    `}</style>
-  );
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return null;
 };
 
 export default GlobalStyles;
