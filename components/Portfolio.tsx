@@ -3,27 +3,19 @@ import React, { useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import AboutSection from './AboutSection';
-import SkillsSection from './SkillsSection';
 import ExperienceSection from './ExperienceSection';
-import EducationSection from './EducationSection';
 import ProjectsSection from './ProjectsSection';
+import EducationSection from './EducationSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 
 const Portfolio: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
-
-  //testing deploy
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / scrollHeight) * 100;
-      setScrollProgress(progress);
-
-      const sections = ['home', 'about', 'skills', 'experience', 'education', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'projects', 'education', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -45,28 +37,21 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
-      
-      {/* Scroll Progress Bar */}
-      <div 
-        className="scroll-progress"
-        style={{ width: `${scrollProgress}%` }}
-      />
-
-      <Navigation 
+    <div className="min-h-screen">
+      <Navigation
         activeSection={activeSection}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         scrollToSection={scrollToSection}
       />
-      
-      <HeroSection scrollToSection={scrollToSection} />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <EducationSection />
-      <ProjectsSection />
-      <ContactSection />
+      <main>
+        <HeroSection scrollToSection={scrollToSection} />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <EducationSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

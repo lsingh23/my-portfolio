@@ -1,4 +1,4 @@
-import { Skill, Experience, Project } from './types';
+import { Experience } from './types';
 
 export const experienceData: Experience[] = [
   {

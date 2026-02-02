@@ -1,19 +1,8 @@
-export interface Skill {
-  name: string;
-  level?: number;
-}
-
 export interface Experience {
   title: string;
   company: string;
   period: string;
   achievements: string[];
-}
-
-export interface Project {
-  title: string;
-  description: string;
-  tech: string[];
 }
 
 export interface NavigationProps {
@@ -25,15 +14,4 @@ export interface NavigationProps {
 
 export interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
-}
-
-export interface AnimatedSectionProps {
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
-}
-
-export interface SkillBarProps {
-  skill: Skill;
-  index: number;
 }

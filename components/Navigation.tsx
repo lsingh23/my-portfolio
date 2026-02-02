@@ -2,59 +2,59 @@ import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { NavigationProps } from './types';
 
-const Navigation: React.FC<NavigationProps> = ({ 
-  activeSection, 
-  isMenuOpen, 
-  setIsMenuOpen, 
-  scrollToSection 
+const Navigation: React.FC<NavigationProps> = ({
+  activeSection,
+  isMenuOpen,
+  setIsMenuOpen,
+  scrollToSection
 }) => {
-  const navItems = ['Home', 'About', 'Skills', 'Experience', 'Education', 'Projects', 'Contact'];
+  const navItems = ['About', 'Experience', 'Projects', 'Contact'];
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/50 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <div className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-            &lt;Lakhveer Singh /&gt;
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+    <nav className="fixed top-0 w-full bg-[#0A0A0B]/80 backdrop-blur-md border-b border-zinc-800/50 z-50">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="flex justify-between items-center h-14">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="text-sm font-semibold text-zinc-50 tracking-tight hover:text-indigo-400 transition-colors duration-200"
+          >
+            LS
+          </button>
+
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className={`hover:text-emerald-400 transition-colors duration-300 relative ${
-                  activeSection === item.toLowerCase() ? 'text-emerald-400' : 'text-gray-300'
+                className={`text-[13px] transition-colors duration-200 ${
+                  activeSection === item.toLowerCase()
+                    ? 'text-zinc-50'
+                    : 'text-zinc-500 hover:text-zinc-300'
                 }`}
               >
                 {item}
-                {activeSection === item.toLowerCase() && (
-                  <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-400 to-cyan-400" />
-                )}
               </button>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden hover:text-emerald-400 transition-colors"
+            className="md:hidden text-zinc-400 hover:text-zinc-50 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-950/95 backdrop-blur-xl border-b border-gray-800/50">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className="md:hidden border-t border-zinc-800/50 bg-[#0A0A0B]/95 backdrop-blur-md">
+          <div className="max-w-3xl mx-auto px-6 py-3 space-y-1">
             {navItems.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="block px-3 py-2 text-gray-300 hover:text-emerald-400 transition-colors w-full text-left"
+                className="block w-full text-left px-3 py-2 text-sm text-zinc-400 hover:text-zinc-50 transition-colors rounded-lg hover:bg-zinc-900"
               >
                 {item}
               </button>
