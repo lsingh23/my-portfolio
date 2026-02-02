@@ -14,13 +14,6 @@ const Navigation: React.FC<NavigationProps> = ({
     <nav className="fixed top-0 w-full bg-[#0A0A0B]/80 backdrop-blur-md border-b border-zinc-800/50 z-50">
       <div className="max-w-3xl mx-auto px-6">
         <div className="flex justify-between items-center h-14">
-          <button
-            onClick={() => scrollToSection('home')}
-            className="text-sm font-semibold text-zinc-50 tracking-tight hover:text-indigo-400 transition-colors duration-200"
-          >
-            LS
-          </button>
-
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
