@@ -4,6 +4,11 @@ import { ArrowUpRight } from 'lucide-react';
 const ProjectsSection: React.FC = () => {
   const projects = [
     {
+      title: 'TileSync - Real-Time Collaborative Grid System',
+      description: 'Distributed multi-user digital refrigerator tiles for household notes, todos, and bill management. Architected a real-time multi-client application with WebSockets, event-driven architecture, and CRDTs (Automerge) for conflict-free, offline-first state synchronization. Developed drag-and-drop tile interface with animated snapping, presence indicators, and optimistic UI updates. Built backend APIs and persistence using Node.js + Express and PostgreSQL for durable storage, automated bill splitting, and multi-tier synchronization.',
+      tech: ['React', 'TypeScript', 'Redux', 'WebSockets', 'Automerge', 'Service Workers', 'PostgreSQL', 'Node.js']
+    },
+    {
       title: 'Movie Recommendation System',
       description: 'Machine learning-based recommendation system with content-based filtering across a full stack application.',
       tech: ['Machine Learning', 'Full Stack', 'Content Filtering']
