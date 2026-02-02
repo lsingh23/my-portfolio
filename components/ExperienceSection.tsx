@@ -1,50 +1,34 @@
 import React from 'react';
-import { Briefcase, ChevronRight } from 'lucide-react';
-import AnimatedSection from './AnimatedSection';
-import { Experience } from './types';
 import { experienceData } from './data';
 
 const ExperienceSection: React.FC = () => {
   return (
-    <AnimatedSection id="experience" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-          Work Experience
-        </h2>
-        <div className="space-y-8">
+    <section id="experience" className="py-24 px-6 border-t border-zinc-900">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="mono text-indigo-400 text-sm mb-12">Experience</h2>
+        <div className="space-y-16">
           {experienceData.map((exp, index) => (
-            <div 
-              key={index} 
-              className="bg-gray-800/20 backdrop-blur-lg rounded-2xl p-8 border border-gray-700/50 hover:border-emerald-400/30 transition-all duration-300 hover-scale"
-              style={{
-                animationDelay: `${index * 0.2}s`,
-                animation: 'fadeInUp 0.6s ease-out forwards',
-                opacity: 0
-              }}
-            >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div key={index}>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4">
                 <div>
-                  <h3 className="text-2xl font-semibold text-emerald-400 mb-2">{exp.title}</h3>
-                  <p className="text-xl text-gray-300 mb-2">{exp.company}</p>
+                  <h3 className="text-lg font-semibold text-zinc-50">{exp.title}</h3>
+                  <p className="text-zinc-400 text-sm">{exp.company}</p>
                 </div>
-                <div className="flex items-center text-cyan-400 bg-gray-700/30 px-4 py-2 rounded-lg">
-                  <Briefcase size={20} className="mr-2" />
-                  <span className="font-medium">{exp.period}</span>
-                </div>
+                <span className="mono text-xs text-zinc-600 shrink-0">{exp.period}</span>
               </div>
-              <div className="grid gap-4">
-                {exp.achievements.map((achievement, achievementIndex) => (
-                  <div key={achievementIndex} className="flex items-start p-3 bg-gray-700/20 rounded-lg">
-                    <ChevronRight size={16} className="text-emerald-400 mr-3 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed">{achievement}</p>
-                  </div>
+              <ul className="space-y-2.5">
+                {exp.achievements.map((achievement, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-zinc-400 leading-relaxed">
+                    <span className="text-zinc-700 mt-0.5 shrink-0">&mdash;</span>
+                    <span>{achievement}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
       </div>
-    </AnimatedSection>
+    </section>
   );
 };
 
