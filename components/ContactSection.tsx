@@ -28,30 +28,28 @@ const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-[140px] px-6">
+    <section id="contact" className="py-[140px] px-6 md:px-12">
       <div className="max-w-[760px] mx-auto">
-        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-8">
-          Contact
-        </p>
+        <p className="section-label mb-8">Contact</p>
 
-        <h3 className="text-2xl md:text-[28px] font-bold text-[var(--text-primary)] leading-snug tracking-[-0.025em] mb-4">
+        <h3 className="headline text-[clamp(1.5rem,4vw,1.75rem)] mb-4">
           Let&apos;s work together.
         </h3>
         <p className="text-[var(--text-secondary)] leading-relaxed max-w-lg text-[15px] mb-10">
-          I&apos;m always open to new opportunities and interesting projects.
-          Feel free to reach out if you&apos;d like to collaborate.
+          Always open to new opportunities and interesting projects.
+          Reach out if you&apos;d like to collaborate.
         </p>
 
-        <div className="space-y-2.5">
+        <div className="space-y-0">
           {links.map((link, index) => (
             <a
               key={index}
               href={link.href}
               {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="card flex items-center justify-between p-4 group"
+              className="cert-row group"
             >
               <div className="flex items-center gap-3">
-                <span className="text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
+                <span className="text-[var(--text-muted)] group-hover:text-[var(--accent-teal)] transition-colors">
                   {link.icon}
                 </span>
                 <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors text-sm">
@@ -60,7 +58,7 @@ const ContactSection: React.FC = () => {
               </div>
               <ArrowUpRight
                 size={14}
-                className="text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors shrink-0"
+                className="cert-arrow text-[var(--text-muted)] shrink-0"
               />
             </a>
           ))}

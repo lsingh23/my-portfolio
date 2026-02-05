@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
+const projectBarColors = ['card-bar-teal', 'card-bar-slate', 'card-bar-terra', 'card-bar-slate'];
+
 const ProjectsSection: React.FC = () => {
   const projects = [
     {
@@ -48,60 +50,57 @@ const ProjectsSection: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-[140px] px-6">
+    <section id="projects" className="py-[140px] px-6 md:px-12">
       <div className="max-w-[760px] mx-auto">
-        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-8">
-          Projects
-        </p>
+        <p className="section-label mb-8">Projects</p>
 
-        {/* Project grid — expands to wider layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`card card-accent p-8 group ${index === 0 ? 'md:col-span-2' : ''}`}
+              className={`card ${projectBarColors[index % projectBarColors.length]} p-8 ${index === 0 ? 'md:col-span-2' : ''}`}
             >
-              <div className="mb-3">
-                <h3 className="text-base font-semibold text-[var(--text-primary)]">
-                  {project.title}
-                </h3>
-                <p className="text-[var(--text-muted)] text-xs mt-1">{project.subtitle}</p>
-              </div>
-              <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="tag-sm">
-                    {tech}
-                  </span>
-                ))}
+              <div className="relative z-10">
+                <div className="mb-3">
+                  <h3 className="headline text-base">
+                    {project.title}
+                  </h3>
+                  <p className="text-[var(--text-muted)] text-xs mt-1">{project.subtitle}</p>
+                </div>
+                <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((tech, i) => (
+                    <span key={i} className="tag-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Certificates */}
+        {/* Certificates — subtle rows, not full cards */}
         <div className="mt-16">
-          <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-6">
-            Certificates
-          </p>
-          <div className="space-y-2.5">
+          <p className="section-label mb-6">Certificates</p>
+          <div>
             {certificates.map((cert, index) => (
               <a
                 key={index}
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card flex items-center justify-between p-4 group"
+                className="cert-row group"
               >
                 <div className="flex items-baseline gap-3 min-w-0">
-                  <span className="text-sm text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors truncate">
+                  <span className="text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-teal)] transition-colors truncate">
                     {cert.name}
                   </span>
                   <span className="text-xs text-[var(--text-muted)] shrink-0">{cert.issuer}</span>
                 </div>
-                <ArrowUpRight size={14} className="text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors shrink-0 ml-3" />
+                <ArrowUpRight size={14} className="cert-arrow text-[var(--text-muted)] shrink-0 ml-3" />
               </a>
             ))}
           </div>

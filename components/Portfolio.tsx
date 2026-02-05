@@ -43,11 +43,10 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen relative">
-      {/* Background layers */}
-      <div className="bg-gradient" />
-      <div className="noise-fine" />
-      <div className="noise-medium" />
-      <div className="vignette" />
+      {/* Warm center glow under grain */}
+      <div className="warm-glow" />
+      {/* Heavy global grain — kraft paper texture */}
+      <div className="grain-global" />
 
       {/* Scroll progress bar */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
