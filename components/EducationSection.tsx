@@ -13,28 +13,32 @@ const EducationSection: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="py-28 px-6">
-      <div className="max-w-4xl mx-auto">
-        <p className="section-label mb-10">Education</p>
-        <div className="glass-card-glow p-8">
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-            <h3 className="text-xl font-bold text-white/90">
+    <section id="education" className="py-32 px-6">
+      <div className="max-w-2xl mx-auto">
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-8">
+          Education
+        </p>
+
+        <div className="card p-7">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 mb-2">
+            <h3 className="text-lg font-bold text-white/90">
               Bachelor of Computer Science (Honours)
             </h3>
-            <span className="mono text-xs text-white/25 shrink-0 sm:mt-1.5">2019 — 2023</span>
+            <span className="text-xs text-white/25 shrink-0 sm:mt-1.5 tabular-nums">2019 — 2023</span>
           </div>
-          <p className="text-white/40 text-sm mb-8">
+          <p className="text-white/35 text-sm mb-7">
             Laurentian University &middot; Sudbury, ON, Canada
           </p>
-          <div>
-            <p className="section-label mb-4">Relevant Coursework</p>
-            <div className="flex flex-wrap gap-2">
-              {coursework.map((course, index) => (
-                <span key={index} className="skill-tag">
-                  {course}
-                </span>
-              ))}
-            </div>
+
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
+            Relevant Coursework
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {coursework.map((course, index) => (
+              <span key={index} className="tag">
+                {course}
+              </span>
+            ))}
           </div>
         </div>
       </div>
