@@ -13,8 +13,8 @@
   --accent-glow: rgba(0, 229, 160, 0.08);
   --accent-orange: #FF6B35;
   --text-primary: #ECECEC;
-  --text-secondary: #8A8A8D;
-  --text-muted: #4A4A4E;
+  --text-secondary: #A0A0A3;
+  --text-muted: #5E5E63;
   --border-default: rgba(255, 255, 255, 0.06);
   --border-hover: rgba(0, 229, 160, 0.20);
 }
@@ -51,6 +51,8 @@ body {
   pointer-events: none;
   opacity: 0.18;
   mix-blend-mode: soft-light;
+  will-change: transform;
+  contain: strict;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 512px 512px;
@@ -58,29 +60,32 @@ body {
 
 .grain-animated {
   position: fixed;
-  inset: 0;
+  inset: -60px;
   z-index: 3;
   pointer-events: none;
   opacity: 0.06;
   mix-blend-mode: soft-light;
+  will-change: transform;
+  contain: layout;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
   animation: grain-shift 5s steps(10) infinite;
 }
 
+/* GPU-accelerated: uses transform instead of background-position */
 @keyframes grain-shift {
-  0%   { background-position: 0 0; }
-  10%  { background-position: -30px 20px; }
-  20%  { background-position: 15px -40px; }
-  30%  { background-position: -50px 10px; }
-  40%  { background-position: 25px -15px; }
-  50%  { background-position: -10px 45px; }
-  60%  { background-position: 40px -25px; }
-  70%  { background-position: -20px -35px; }
-  80%  { background-position: 35px 30px; }
-  90%  { background-position: -45px -10px; }
-  100% { background-position: 0 0; }
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-30px, 20px); }
+  20%  { transform: translate(15px, -40px); }
+  30%  { transform: translate(-50px, 10px); }
+  40%  { transform: translate(25px, -15px); }
+  50%  { transform: translate(-10px, 45px); }
+  60%  { transform: translate(40px, -25px); }
+  70%  { transform: translate(-20px, -35px); }
+  80%  { transform: translate(35px, 30px); }
+  90%  { transform: translate(-45px, -10px); }
+  100% { transform: translate(0, 0); }
 }
 
 /* Hero radial glow — subtle mint center */
@@ -106,6 +111,8 @@ body {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  will-change: transform;
+  contain: layout;
   -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
@@ -168,9 +175,10 @@ body {
 /* H6: Bright dust speckle — 2.0 freq, 20% screen, animated */
 .hero-grain-6 {
   position: absolute;
-  inset: 0;
+  inset: -60px;
   opacity: 0.20;
   mix-blend-mode: screen;
+  will-change: transform;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='h6'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23h6)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
