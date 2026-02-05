@@ -4,8 +4,13 @@ import { HeroSectionProps } from './types';
 
 const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection }) => {
   return (
-    <section id="home" className="min-h-screen flex items-center px-6 md:px-12">
-      <div className="max-w-[720px] w-full mx-auto md:mx-0 md:ml-[max(calc(50vw-500px),3rem)]">
+    <section id="home" className="min-h-screen flex items-center px-6 md:px-12 relative overflow-hidden">
+      {/* Hero-local heavy grain texture + gradient */}
+      <div className="hero-texture" />
+      {/* Bottom fade into bg-base */}
+      <div className="hero-fade" />
+
+      <div className="max-w-[720px] w-full mx-auto md:mx-0 md:ml-[max(calc(50vw-500px),3rem)] relative z-10">
         <div className="animate-fade-in-up stagger-1">
           {/* Geist Mono status line */}
           <p className="section-label mb-8">
