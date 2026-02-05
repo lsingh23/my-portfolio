@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection }) => {
         </h1>
 
         {/* One-liner — Switzer 400, 18px, text-secondary */}
-        <p className="text-[var(--text-secondary)] max-w-md leading-relaxed mb-10 text-[18px] animate-fade-in-up stagger-4">
+        <p className="text-[#C8C8CB] max-w-md leading-relaxed mb-10 text-[18px] animate-fade-in-up stagger-4">
           Building AI-powered web applications with modern tooling
           and clean architecture.
         </p>
