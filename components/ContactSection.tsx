@@ -29,13 +29,13 @@ const ContactSection: React.FC = () => {
 
   return (
     <section id="contact" className="py-[140px] px-6 md:px-12">
-      <div className="max-w-[760px] mx-auto">
+      <div className="max-w-[720px] mx-auto">
         <p className="section-label mb-8">Contact</p>
 
-        <h3 className="headline text-[clamp(1.5rem,4vw,1.75rem)] mb-4">
+        <h3 className="headline-sub text-[clamp(28px,4vw,36px)] mb-4">
           Let&apos;s work together.
         </h3>
-        <p className="text-[var(--text-secondary)] leading-relaxed max-w-lg text-[15px] mb-10">
+        <p className="text-[var(--text-secondary)] leading-relaxed max-w-lg text-[17px] mb-10">
           Always open to new opportunities and interesting projects.
           Reach out if you&apos;d like to collaborate.
         </p>
@@ -46,10 +46,10 @@ const ContactSection: React.FC = () => {
               key={index}
               href={link.href}
               {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="cert-row group"
+              className="text-row group"
             >
               <div className="flex items-center gap-3">
-                <span className="text-[var(--text-muted)] group-hover:text-[var(--accent-teal)] transition-colors">
+                <span className="text-[var(--text-muted)] group-hover:text-[var(--accent-mint)] transition-colors">
                   {link.icon}
                 </span>
                 <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors text-sm">
@@ -58,7 +58,7 @@ const ContactSection: React.FC = () => {
               </div>
               <ArrowUpRight
                 size={14}
-                className="cert-arrow text-[var(--text-muted)] shrink-0"
+                className="row-arrow text-[var(--text-muted)] shrink-0"
               />
             </a>
           ))}

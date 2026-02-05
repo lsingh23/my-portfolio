@@ -12,11 +12,11 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-lg">
-      <div className="bg-[#F7F5F1]/90 border border-black/[0.06] rounded-full px-6 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)]">
+      <div className="nav-pill px-6">
         <div className="flex justify-between items-center h-11">
           <button
             onClick={() => scrollToSection('home')}
-            className="headline text-sm hover:text-[var(--accent-teal)] transition-colors"
+            className="headline text-sm hover:text-[var(--accent-mint)] transition-colors"
           >
             LS
           </button>
@@ -26,13 +26,16 @@ const Navigation: React.FC<NavigationProps> = ({
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className={`px-3.5 py-1 rounded-full text-[13px] font-medium transition-all duration-200 ${
+                className={`relative px-3.5 py-1 rounded-full text-[13px] font-medium transition-all duration-200 ${
                   activeSection === item.toLowerCase()
-                    ? 'text-[var(--accent-teal)] bg-[rgba(43,107,94,0.08)]'
+                    ? 'text-[var(--accent-mint)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {item}
+                {activeSection === item.toLowerCase() && (
+                  <span className="nav-dot" />
+                )}
               </button>
             ))}
           </div>
@@ -48,7 +51,7 @@ const Navigation: React.FC<NavigationProps> = ({
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden mt-2 bg-[#F7F5F1]/95 border border-black/[0.06] rounded-2xl overflow-hidden backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
+        <div className="md:hidden mt-2 bg-[var(--bg-surface)]/95 border border-[var(--border-default)] rounded-2xl overflow-hidden backdrop-blur-xl">
           <div className="px-3 py-3 space-y-0.5">
             {navItems.map((item) => (
               <button
@@ -56,8 +59,8 @@ const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={`block w-full text-left px-4 py-2.5 text-sm rounded-xl transition-all duration-200 ${
                   activeSection === item.toLowerCase()
-                    ? 'bg-[rgba(43,107,94,0.08)] text-[var(--accent-teal)]'
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.02]'
+                    ? 'text-[var(--accent-mint)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/[0.02]'
                 }`}
               >
                 {item}

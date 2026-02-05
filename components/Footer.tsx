@@ -3,7 +3,7 @@ import React from 'react';
 const Footer: React.FC = () => {
   return (
     <footer className="py-10 px-6 md:px-12">
-      <div className="max-w-[760px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div className="max-w-[720px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
         <span className="text-xs text-[var(--text-muted)]">
           &copy; {new Date().getFullYear()} Lakhveer Singh
         </span>
