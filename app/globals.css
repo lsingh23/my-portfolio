@@ -41,32 +41,33 @@ body {
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 1 — Global film grain (heavy)
-   0.75 freq, 4 octaves, 40% soft-light, fixed
+   GRAIN LAYER 1 — Primary film grain
+   0.65 freq, 5 octaves, 60% soft-light
+   (soft-light = max visible texture on dark)
    ─────────────────────────────────── */
 .grain-global {
   position: fixed;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.40;
+  opacity: 0.60;
   mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 512px 512px;
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 2 — Animated micro-grain (heavy)
-   1.2 freq, 18% overlay, steps(10) 5s loop
+   GRAIN LAYER 2 — Animated micro-grain
+   1.2 freq, 28% soft-light, steps(10) 5s
    ─────────────────────────────────── */
 .grain-animated {
   position: fixed;
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.18;
-  mix-blend-mode: overlay;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -75,33 +76,33 @@ body {
 
 /* ───────────────────────────────────
    GRAIN LAYER 3 — Coarse macro texture
-   Low freq (0.35), 6 octaves for visible
-   paper-like texture, 30% multiply, fixed
+   0.35 freq, 6 octaves, 50% soft-light
+   Large-scale paper feel
    ─────────────────────────────────── */
 .grain-coarse {
   position: fixed;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.30;
-  mix-blend-mode: multiply;
+  opacity: 0.50;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='gc'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gc)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 1024px 1024px;
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 4 — High-freq static dust
-   2.0 freq, tight speckle, 14% overlay (dark)
-   Animated with offset from layer 2
+   GRAIN LAYER 4 — Bright dust speckle
+   2.0 freq, 20% screen — visible bright
+   specks on dark bg, animated
    ─────────────────────────────────── */
 .grain-dust {
   position: fixed;
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.14;
-  mix-blend-mode: overlay;
+  opacity: 0.20;
+  mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='gd'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gd)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
@@ -136,65 +137,67 @@ body {
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 5 — Full-page coarse grain
-   0.45 freq, 6 octaves, 50% multiply (dark)
-   Previously hero-only, now covers entire page
+   GRAIN LAYER 5 — Heavy coarse grain
+   0.45 freq, 6 octaves, 55% soft-light
+   Adds chunky visible texture
    ─────────────────────────────────── */
 .grain-heavy {
   position: fixed;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.50;
-  mix-blend-mode: multiply;
+  opacity: 0.55;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hg)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 512px 512px;
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 6 — Full-page fine noise
-   1.4 freq, 30% overlay for dense grit
+   GRAIN LAYER 6 — Fine noise
+   1.4 freq, 35% soft-light for dense grit
    ─────────────────────────────────── */
 .grain-fine {
   position: fixed;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.30;
-  mix-blend-mode: overlay;
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hf'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hf)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 7 — Full-page mid-freq depth
-   0.85 freq, 35% multiply
+   GRAIN LAYER 7 — Mid-freq bright grain
+   0.85 freq, 25% screen — visible bright
+   texture variation on dark surfaces
    ─────────────────────────────────── */
 .grain-mid {
   position: fixed;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.35;
-  mix-blend-mode: multiply;
+  opacity: 0.25;
+  mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hm'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hm)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 512px 512px;
 }
 
 /* ───────────────────────────────────
-   GRAIN LAYER 8 — Full-page speckle
-   2.5 freq, 16% overlay (dark)
+   GRAIN LAYER 8 — Bright speckle
+   2.5 freq, 22% screen — sharp bright
+   dust specks, very visible on dark
    ─────────────────────────────────── */
 .grain-speckle {
   position: fixed;
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.16;
-  mix-blend-mode: overlay;
+  opacity: 0.22;
+  mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hs'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hs)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
@@ -212,15 +215,15 @@ body {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Card grain — 0.65 freq, 5 octaves, 22% → 34% on hover */
+/* Card grain — 0.65 freq, 5 octaves, 35% → 50% on hover, soft-light */
 .card::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.22;
-  mix-blend-mode: overlay;
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -235,7 +238,7 @@ body {
 }
 
 .card:hover::before {
-  opacity: 0.34;
+  opacity: 0.50;
 }
 
 /* Left accent — 2px gradient mint → transparent */
