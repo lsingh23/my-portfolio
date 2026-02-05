@@ -7,6 +7,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection }) => {
     <section id="home" className="min-h-screen flex items-center px-6 md:px-12 relative overflow-hidden">
       {/* Hero-local heavy grain texture + gradient */}
       <div className="hero-texture" />
+      {/* Extra hero grain layers (stacked divs) */}
+      <div className="hero-grain-extra">
+        <div className="hero-grain-mid" />
+        <div className="hero-grain-speckle" />
+      </div>
       {/* Bottom fade into bg-base */}
       <div className="hero-fade" />
 

@@ -45,10 +45,14 @@ const Portfolio: React.FC = () => {
     <div className="min-h-screen relative">
       {/* Void glow — subtle mint radial */}
       <div className="void-glow" />
-      {/* Grain layer 1 — global film grain */}
+      {/* Grain layer 1 — global film grain (40% soft-light) */}
       <div className="grain-global" />
-      {/* Grain layer 2 — animated micro-grain */}
+      {/* Grain layer 2 — animated micro-grain (18% overlay) */}
       <div className="grain-animated" />
+      {/* Grain layer 3 — coarse macro texture (30% multiply) */}
+      <div className="grain-coarse" />
+      {/* Grain layer 4 — high-freq dust speckle (12% screen) */}
+      <div className="grain-dust" />
 
       {/* Scroll progress bar — 2px mint */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
