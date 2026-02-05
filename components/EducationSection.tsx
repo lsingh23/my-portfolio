@@ -13,24 +13,26 @@ const EducationSection: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="py-32 px-6">
-      <div className="max-w-2xl mx-auto">
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-8">
+    <section id="education" className="py-[140px] px-6">
+      <div className="max-w-[760px] mx-auto">
+        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-8">
           Education
         </p>
 
-        <div className="card p-7">
+        <div className="card p-8 md:p-10">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1.5 mb-2">
-            <h3 className="text-lg font-bold text-white/90">
+            <h3 className="text-lg font-bold text-[var(--text-primary)] tracking-[-0.025em]">
               Bachelor of Computer Science (Honours)
             </h3>
-            <span className="text-xs text-white/25 shrink-0 sm:mt-1.5 tabular-nums">2019 — 2023</span>
+            <span className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs text-[var(--text-muted)] shrink-0 sm:mt-1.5 tabular-nums tracking-[0.03em]">
+              2019 — 2023
+            </span>
           </div>
-          <p className="text-white/35 text-sm mb-7">
+          <p className="text-[var(--text-muted)] text-sm mb-8">
             Laurentian University &middot; Sudbury, ON, Canada
           </p>
 
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4">
+          <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-4">
             Relevant Coursework
           </p>
           <div className="flex flex-wrap gap-2">

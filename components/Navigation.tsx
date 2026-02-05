@@ -12,11 +12,11 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-lg">
-      <div className="bg-[rgba(14,14,22,0.65)] border border-white/[0.07] rounded-full px-6 backdrop-blur-xl">
+      <div className="bg-white/80 border border-black/[0.04] rounded-full px-6 backdrop-blur-xl shadow-[0_2px_20px_rgba(26,35,50,0.06)]">
         <div className="flex justify-between items-center h-11">
           <button
             onClick={() => scrollToSection('home')}
-            className="text-sm font-semibold text-white/90 hover:text-white transition-colors"
+            className="text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
           >
             LS
           </button>
@@ -28,8 +28,8 @@ const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={`px-3.5 py-1 rounded-full text-[13px] font-medium transition-all duration-200 ${
                   activeSection === item.toLowerCase()
-                    ? 'text-white bg-white/[0.08]'
-                    : 'text-white/45 hover:text-white/75'
+                    ? 'text-[var(--accent)] bg-[rgba(43,138,126,0.08)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {item}
@@ -38,7 +38,7 @@ const Navigation: React.FC<NavigationProps> = ({
           </div>
 
           <button
-            className="md:hidden text-white/50 hover:text-white transition-colors"
+            className="md:hidden text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -48,7 +48,7 @@ const Navigation: React.FC<NavigationProps> = ({
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden mt-2 bg-[rgba(14,14,22,0.85)] border border-white/[0.07] rounded-2xl overflow-hidden backdrop-blur-xl">
+        <div className="md:hidden mt-2 bg-white/90 border border-black/[0.04] rounded-2xl overflow-hidden backdrop-blur-xl shadow-[0_8px_30px_rgba(26,35,50,0.08)]">
           <div className="px-3 py-3 space-y-0.5">
             {navItems.map((item) => (
               <button
@@ -56,8 +56,8 @@ const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={`block w-full text-left px-4 py-2.5 text-sm rounded-xl transition-all duration-200 ${
                   activeSection === item.toLowerCase()
-                    ? 'bg-white/[0.08] text-white'
-                    : 'text-white/45 hover:text-white/75 hover:bg-white/[0.04]'
+                    ? 'bg-[rgba(43,138,126,0.08)] text-[var(--accent)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.02]'
                 }`}
               >
                 {item}

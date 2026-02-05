@@ -12,6 +12,7 @@ import Footer from './Footer';
 const Portfolio: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,10 @@ const Portfolio: React.FC = () => {
         return false;
       });
       if (current) setActiveSection(current);
+
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+      setScrollProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -38,9 +43,16 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen relative">
+      {/* Background layers */}
       <div className="bg-gradient" />
-      <div className="noise-overlay" />
+      <div className="noise-fine" />
+      <div className="noise-medium" />
+      <div className="vignette" />
 
+      {/* Scroll progress bar */}
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
+
+      {/* Content */}
       <div className="relative z-10">
         <Navigation
           activeSection={activeSection}
@@ -50,10 +62,15 @@ const Portfolio: React.FC = () => {
         />
         <main>
           <HeroSection scrollToSection={scrollToSection} />
+          <div className="section-divider" />
           <AboutSection />
+          <div className="section-divider" />
           <ExperienceSection />
+          <div className="section-divider" />
           <ProjectsSection />
+          <div className="section-divider" />
           <EducationSection />
+          <div className="section-divider" />
           <ContactSection />
         </main>
         <Footer />
