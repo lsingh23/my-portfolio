@@ -37,22 +37,38 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <Navigation
-        activeSection={activeSection}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        scrollToSection={scrollToSection}
-      />
-      <main>
-        <HeroSection scrollToSection={scrollToSection} />
-        <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <EducationSection />
-        <ContactSection />
-      </main>
-      <Footer />
+    <div className="min-h-screen relative">
+      {/* Mesh Gradient Background */}
+      <div className="mesh-gradient" />
+
+      {/* Noise Texture Overlay */}
+      <div className="noise-overlay" />
+
+      {/* Aurora Lighting Blobs */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="aurora-blob aurora-blob-1" />
+        <div className="aurora-blob aurora-blob-2" />
+        <div className="aurora-blob aurora-blob-3" />
+      </div>
+
+      {/* Content Layer */}
+      <div className="relative z-10">
+        <Navigation
+          activeSection={activeSection}
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          scrollToSection={scrollToSection}
+        />
+        <main>
+          <HeroSection scrollToSection={scrollToSection} />
+          <AboutSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <EducationSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

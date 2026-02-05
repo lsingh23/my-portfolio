@@ -13,29 +13,24 @@ const EducationSection: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="py-24 px-6 border-t border-zinc-900">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="mono text-indigo-400 text-sm mb-8">Education</h2>
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-            <h3 className="text-lg font-semibold text-zinc-50">
+    <section id="education" className="py-28 px-6">
+      <div className="max-w-4xl mx-auto">
+        <p className="section-label mb-10">Education</p>
+        <div className="glass-card-glow p-8">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+            <h3 className="text-xl font-bold text-white/90">
               Bachelor of Computer Science (Honours)
             </h3>
-            <span className="mono text-xs text-zinc-600">2019 — 2023</span>
+            <span className="mono text-xs text-white/25 shrink-0 sm:mt-1.5">2019 — 2023</span>
           </div>
-          <p className="text-zinc-400 text-sm mb-6">
-            Laurentian University · Sudbury, ON, Canada
+          <p className="text-white/40 text-sm mb-8">
+            Laurentian University &middot; Sudbury, ON, Canada
           </p>
           <div>
-            <h4 className="mono text-zinc-600 text-xs uppercase tracking-wider mb-3">
-              Relevant Coursework
-            </h4>
+            <p className="section-label mb-4">Relevant Coursework</p>
             <div className="flex flex-wrap gap-2">
               {coursework.map((course, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1.5 text-[13px] text-zinc-500 bg-zinc-900 border border-zinc-800 rounded-md"
-                >
+                <span key={index} className="skill-tag">
                   {course}
                 </span>
               ))}
