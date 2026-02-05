@@ -4,24 +4,32 @@ import { ArrowUpRight } from 'lucide-react';
 const ProjectsSection: React.FC = () => {
   const projects = [
     {
-      title: 'TileSync - Real-Time Collaborative Grid System',
-      description: 'Distributed multi-user digital refrigerator tiles for household notes, todos, and bill management. Architected a real-time multi-client application with WebSockets, event-driven architecture, and CRDTs (Automerge) for conflict-free, offline-first state synchronization. Developed drag-and-drop tile interface with animated snapping, presence indicators, and optimistic UI updates. Built backend APIs and persistence using Node.js + Express and PostgreSQL for durable storage, automated bill splitting, and multi-tier synchronization.',
-      tech: ['React', 'TypeScript', 'Redux', 'WebSockets', 'Automerge', 'Service Workers', 'PostgreSQL', 'Node.js']
+      title: 'TileSync',
+      subtitle: 'Real-Time Collaborative Grid System',
+      description: 'Distributed multi-user digital refrigerator tiles for household notes, todos, and bill management. Real-time multi-client app with WebSockets, CRDTs (Automerge) for conflict-free, offline-first state synchronization.',
+      tech: ['React', 'TypeScript', 'Redux', 'WebSockets', 'Automerge', 'PostgreSQL', 'Node.js'],
+      featured: true
     },
     {
       title: 'Movie Recommendation System',
+      subtitle: 'ML-Powered Content Discovery',
       description: 'Machine learning-based recommendation system with content-based filtering across a full stack application.',
-      tech: ['Machine Learning', 'Full Stack', 'Content Filtering']
+      tech: ['Machine Learning', 'Full Stack', 'Content Filtering'],
+      featured: false
     },
     {
       title: 'Social Media App',
+      subtitle: 'Full-Featured MERN Application',
       description: 'Full-featured social media application with CRUD functionalities built on the MERN stack.',
-      tech: ['MongoDB', 'Express.js', 'React', 'Node.js']
+      tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+      featured: false
     },
     {
       title: 'ATM Database System',
+      subtitle: 'Database Operations Simulator',
       description: 'Database project simulating ATM operations using SQL with system analysis.',
-      tech: ['SQL', 'Database Design', 'System Analysis']
+      tech: ['SQL', 'Database Design', 'System Analysis'],
+      featured: false
     }
   ];
 
@@ -44,24 +52,31 @@ const ProjectsSection: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 border-t border-zinc-900">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="mono text-indigo-400 text-sm mb-12">Projects</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
+    <section id="projects" className="py-28 px-6">
+      <div className="max-w-4xl mx-auto">
+        <p className="section-label mb-10">Projects</p>
+
+        {/* Bento Grid — Featured project spans 2 cols */}
+        <div className="grid md:grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="p-5 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-colors duration-200 group"
+              className={`glass-card-glow p-7 group ${
+                project.featured ? 'md:col-span-2' : ''
+              }`}
             >
-              <h3 className="font-semibold text-zinc-50 mb-2 group-hover:text-indigo-400 transition-colors duration-200">
-                {project.title}
-              </h3>
-              <p className="text-sm text-zinc-500 mb-4 leading-relaxed">
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold text-white/90 group-hover:text-white transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-white/30 text-xs mono mt-1">{project.subtitle}</p>
+              </div>
+              <p className="text-sm text-white/35 mb-5 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, i) => (
-                  <span key={i} className="mono text-[11px] text-zinc-500 bg-zinc-900 px-2 py-0.5 rounded">
+                  <span key={i} className="mono text-[11px] text-white/35 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-full">
                     {tech}
                   </span>
                 ))}
@@ -70,8 +85,9 @@ const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-16">
-          <h3 className="mono text-zinc-600 text-xs uppercase tracking-wider mb-6">Certificates</h3>
+        {/* Certificates */}
+        <div className="mt-14">
+          <p className="section-label mb-6">Certificates</p>
           <div className="space-y-3">
             {certificates.map((cert, index) => (
               <a
@@ -79,15 +95,15 @@ const ProjectsSection: React.FC = () => {
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-3 border border-zinc-800/50 rounded-lg hover:border-zinc-700 transition-colors duration-200 group"
+                className="glass-card flex items-center justify-between p-5 group !rounded-2xl"
               >
                 <div className="flex items-baseline gap-3 min-w-0">
-                  <span className="text-sm text-zinc-300 group-hover:text-zinc-50 transition-colors duration-200 truncate">
+                  <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 truncate">
                     {cert.name}
                   </span>
-                  <span className="mono text-xs text-zinc-600 shrink-0">{cert.issuer}</span>
+                  <span className="mono text-xs text-white/20 shrink-0">{cert.issuer}</span>
                 </div>
-                <ArrowUpRight size={14} className="text-zinc-700 group-hover:text-indigo-400 transition-colors duration-200 shrink-0 ml-3" />
+                <ArrowUpRight size={14} className="text-white/20 group-hover:text-violet-400 transition-colors duration-300 shrink-0 ml-3" />
               </a>
             ))}
           </div>
