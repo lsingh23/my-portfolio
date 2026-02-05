@@ -38,20 +38,9 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen relative">
-      {/* Mesh Gradient Background */}
-      <div className="mesh-gradient" />
-
-      {/* Noise Texture Overlay */}
+      <div className="bg-gradient" />
       <div className="noise-overlay" />
 
-      {/* Aurora Lighting Blobs */}
-      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="aurora-blob aurora-blob-1" />
-        <div className="aurora-blob aurora-blob-2" />
-        <div className="aurora-blob aurora-blob-3" />
-      </div>
-
-      {/* Content Layer */}
       <div className="relative z-10">
         <Navigation
           activeSection={activeSection}

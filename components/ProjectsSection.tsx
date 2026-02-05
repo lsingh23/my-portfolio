@@ -8,28 +8,24 @@ const ProjectsSection: React.FC = () => {
       subtitle: 'Real-Time Collaborative Grid System',
       description: 'Distributed multi-user digital refrigerator tiles for household notes, todos, and bill management. Real-time multi-client app with WebSockets, CRDTs (Automerge) for conflict-free, offline-first state synchronization.',
       tech: ['React', 'TypeScript', 'Redux', 'WebSockets', 'Automerge', 'PostgreSQL', 'Node.js'],
-      featured: true
     },
     {
       title: 'Movie Recommendation System',
       subtitle: 'ML-Powered Content Discovery',
       description: 'Machine learning-based recommendation system with content-based filtering across a full stack application.',
       tech: ['Machine Learning', 'Full Stack', 'Content Filtering'],
-      featured: false
     },
     {
       title: 'Social Media App',
       subtitle: 'Full-Featured MERN Application',
       description: 'Full-featured social media application with CRUD functionalities built on the MERN stack.',
       tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
-      featured: false
     },
     {
       title: 'ATM Database System',
       subtitle: 'Database Operations Simulator',
       description: 'Database project simulating ATM operations using SQL with system analysis.',
       tech: ['SQL', 'Database Design', 'System Analysis'],
-      featured: false
     }
   ];
 
@@ -52,31 +48,27 @@ const ProjectsSection: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-28 px-6">
-      <div className="max-w-4xl mx-auto">
-        <p className="section-label mb-10">Projects</p>
+    <section id="projects" className="py-32 px-6">
+      <div className="max-w-2xl mx-auto">
+        <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-8">
+          Projects
+        </p>
 
-        {/* Bento Grid — Featured project spans 2 cols */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="space-y-4">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`glass-card-glow p-7 group ${
-                project.featured ? 'md:col-span-2' : ''
-              }`}
-            >
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold text-white/90 group-hover:text-white transition-colors">
+            <div key={index} className="card p-6 group">
+              <div className="mb-3">
+                <h3 className="text-base font-semibold text-white/90 group-hover:text-white transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-white/30 text-xs mono mt-1">{project.subtitle}</p>
+                <p className="text-white/30 text-xs mt-1">{project.subtitle}</p>
               </div>
-              <p className="text-sm text-white/35 mb-5 leading-relaxed">
+              <p className="text-sm text-white/35 mb-4 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((tech, i) => (
-                  <span key={i} className="mono text-[11px] text-white/35 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-full">
+                  <span key={i} className="text-[11px] text-white/35 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-full">
                     {tech}
                   </span>
                 ))}
@@ -86,24 +78,26 @@ const ProjectsSection: React.FC = () => {
         </div>
 
         {/* Certificates */}
-        <div className="mt-14">
-          <p className="section-label mb-6">Certificates</p>
-          <div className="space-y-3">
+        <div className="mt-16">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-6">
+            Certificates
+          </p>
+          <div className="space-y-2.5">
             {certificates.map((cert, index) => (
               <a
                 key={index}
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card flex items-center justify-between p-5 group !rounded-2xl"
+                className="card flex items-center justify-between p-4 group !rounded-xl"
               >
                 <div className="flex items-baseline gap-3 min-w-0">
-                  <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors duration-300 truncate">
+                  <span className="text-sm text-white/55 group-hover:text-white/90 transition-colors truncate">
                     {cert.name}
                   </span>
-                  <span className="mono text-xs text-white/20 shrink-0">{cert.issuer}</span>
+                  <span className="text-xs text-white/20 shrink-0">{cert.issuer}</span>
                 </div>
-                <ArrowUpRight size={14} className="text-white/20 group-hover:text-violet-400 transition-colors duration-300 shrink-0 ml-3" />
+                <ArrowUpRight size={14} className="text-white/15 group-hover:text-[var(--color-accent)] transition-colors shrink-0 ml-3" />
               </a>
             ))}
           </div>
