@@ -48,27 +48,31 @@ const ProjectsSection: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-32 px-6">
-      <div className="max-w-2xl mx-auto">
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-8">
+    <section id="projects" className="py-[140px] px-6">
+      <div className="max-w-[760px] mx-auto">
+        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-8">
           Projects
         </p>
 
-        <div className="space-y-4">
+        {/* Project grid — expands to wider layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, index) => (
-            <div key={index} className="card p-6 group">
+            <div
+              key={index}
+              className={`card card-accent p-8 group ${index === 0 ? 'md:col-span-2' : ''}`}
+            >
               <div className="mb-3">
-                <h3 className="text-base font-semibold text-white/90 group-hover:text-white transition-colors">
+                <h3 className="text-base font-semibold text-[var(--text-primary)]">
                   {project.title}
                 </h3>
-                <p className="text-white/30 text-xs mt-1">{project.subtitle}</p>
+                <p className="text-[var(--text-muted)] text-xs mt-1">{project.subtitle}</p>
               </div>
-              <p className="text-sm text-white/35 mb-4 leading-relaxed">
+              <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((tech, i) => (
-                  <span key={i} className="text-[11px] text-white/35 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-full">
+                  <span key={i} className="tag-sm">
                     {tech}
                   </span>
                 ))}
@@ -79,7 +83,7 @@ const ProjectsSection: React.FC = () => {
 
         {/* Certificates */}
         <div className="mt-16">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-6">
+          <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-6">
             Certificates
           </p>
           <div className="space-y-2.5">
@@ -89,15 +93,15 @@ const ProjectsSection: React.FC = () => {
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card flex items-center justify-between p-4 group !rounded-xl"
+                className="card flex items-center justify-between p-4 group"
               >
                 <div className="flex items-baseline gap-3 min-w-0">
-                  <span className="text-sm text-white/55 group-hover:text-white/90 transition-colors truncate">
+                  <span className="text-sm text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors truncate">
                     {cert.name}
                   </span>
-                  <span className="text-xs text-white/20 shrink-0">{cert.issuer}</span>
+                  <span className="text-xs text-[var(--text-muted)] shrink-0">{cert.issuer}</span>
                 </div>
-                <ArrowUpRight size={14} className="text-white/15 group-hover:text-[var(--color-accent)] transition-colors shrink-0 ml-3" />
+                <ArrowUpRight size={14} className="text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors shrink-0 ml-3" />
               </a>
             ))}
           </div>

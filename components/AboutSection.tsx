@@ -10,24 +10,24 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-32 px-6">
-      <div className="max-w-2xl mx-auto">
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-8">
+    <section id="about" className="py-[140px] px-6">
+      <div className="max-w-[760px] mx-auto">
+        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-8">
           About
         </p>
 
-        <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug mb-6">
+        <h2 className="text-2xl md:text-[28px] font-bold text-[var(--text-primary)] leading-snug tracking-[-0.025em] mb-6">
           Software engineer building production web apps &amp; AI-powered solutions.
         </h2>
 
-        <p className="text-white/40 leading-[1.75] text-[15px] mb-16">
+        <p className="text-[var(--text-secondary)] leading-[1.75] text-[15px] mb-16">
           3+ years of experience across the full stack. Currently a Founding Engineer
           at Kindgi, where I architect and develop AI-driven applications using React,
           Next.js, and TypeScript. My work spans from frontend development with React
           and Redux to backend systems with PostgreSQL and Scala.
         </p>
 
-        <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-5">
+        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-xs font-medium tracking-[0.03em] text-[var(--accent)] mb-5">
           Technologies
         </p>
         <div className="flex flex-wrap gap-2">
