@@ -1,72 +1,61 @@
 import React from 'react';
-import { ArrowDown, ArrowRight, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, Github, Linkedin } from 'lucide-react';
 import { HeroSectionProps } from './types';
 
 const HeroSection: React.FC<HeroSectionProps> = ({ scrollToSection }) => {
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-      <div className="animate-fade-in max-w-3xl">
-        {/* Brand Lockup */}
-        <div className="flex items-center justify-center gap-2.5 mb-10">
-          <div className="w-7 h-7 rounded-lg bg-[var(--accent)] flex items-center justify-center">
-            <span className="text-white text-xs font-bold">LS</span>
-          </div>
-          <span className="text-sm font-medium text-[var(--text-secondary)] tracking-wide">Lakhveer Singh</span>
-        </div>
+    <section id="home" className="min-h-screen flex items-center px-6 md:px-12">
+      <div className="max-w-[760px] w-full mx-auto md:mx-0 md:ml-[max(calc(50vw-500px),3rem)]">
+        <div className="animate-fade-in">
+          {/* Monospace status line */}
+          <p className="section-label mb-8">
+            // Full Stack Developer
+          </p>
 
-        {/* Headline — Heroic display */}
-        <h1 className="text-[clamp(2.8rem,10vw,3.75rem)] font-bold leading-[1.2] tracking-[-0.025em] text-[var(--text-primary)] mb-6">
-          Full Stack Developer
-        </h1>
+          {/* Headline — Clash Display, left-aligned, huge */}
+          <h1 className="headline text-[clamp(3rem,10vw,4.5rem)] mb-6">
+            Lakhveer<br />Singh
+          </h1>
 
-        {/* Monospace status line */}
-        <p className="font-[JetBrains_Mono,ui-monospace,monospace] text-[13px] tracking-[0.03em] text-[var(--text-muted)] mb-10">
-          react &middot; next.js &middot; typescript &middot; ai agents
-        </p>
+          {/* Subtext — Switzer body */}
+          <p className="text-[var(--text-secondary)] max-w-md leading-relaxed mb-10 text-[15px]">
+            Building AI-powered web applications with modern tooling
+            and clean architecture. Currently a Founding Engineer at Kindgi.
+          </p>
 
-        {/* Subtext */}
-        <p className="text-[clamp(0.95rem,2vw,1.1rem)] text-[var(--text-secondary)] font-normal max-w-md mx-auto leading-relaxed mb-12">
-          Building AI-powered web applications with modern tooling and clean architecture.
-        </p>
-
-        {/* CTA + Social */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="mailto:lakhveersingh10599@gmail.com"
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[var(--accent)] text-white font-semibold text-[15px] hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(43,138,126,0.25)]"
-          >
-            Get in Touch
-            <ArrowRight size={16} />
-          </a>
-          <div className="flex items-center gap-2">
-            <a
-              href="https://github.com/lsingh23"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 rounded-full border border-black/[0.06] bg-white/60 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)]/20 transition-all"
+          {/* CTA + Social */}
+          <div className="flex flex-wrap items-center gap-4">
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[var(--accent-teal)] text-white font-semibold text-[15px] hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(43,107,94,0.20)]"
             >
-              <Github size={18} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/lakhveer-singh-550669200/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 rounded-full border border-black/[0.06] bg-white/60 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)]/20 transition-all"
-            >
-              <Linkedin size={18} />
-            </a>
+              Get in Touch
+              <ArrowRight size={16} />
+            </button>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://github.com/lsingh23"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 rounded-full border border-black/[0.06] bg-[var(--surface)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-teal)] hover:border-[var(--accent-teal)]/30 transition-all"
+              >
+                <Github size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/lakhveer-singh-550669200/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 rounded-full border border-black/[0.06] bg-[var(--surface)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-teal)] hover:border-[var(--accent-teal)]/30 transition-all"
+              >
+                <Linkedin size={18} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <button
-        onClick={() => scrollToSection('about')}
-        className="absolute bottom-10 text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors animate-float"
-        aria-label="Scroll to about section"
-      >
-        <ArrowDown size={18} />
-      </button>
+      {/* Decorative dot grid — right side breathing room */}
+      <div className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 w-[200px] h-[280px] dot-grid rounded-2xl opacity-60" />
     </section>
   );
 };

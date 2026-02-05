@@ -12,11 +12,11 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-lg">
-      <div className="bg-white/80 border border-black/[0.04] rounded-full px-6 backdrop-blur-xl shadow-[0_2px_20px_rgba(26,35,50,0.06)]">
+      <div className="bg-[#F7F5F1]/90 border border-black/[0.06] rounded-full px-6 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)]">
         <div className="flex justify-between items-center h-11">
           <button
             onClick={() => scrollToSection('home')}
-            className="text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+            className="headline text-sm hover:text-[var(--accent-teal)] transition-colors"
           >
             LS
           </button>
@@ -28,7 +28,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={`px-3.5 py-1 rounded-full text-[13px] font-medium transition-all duration-200 ${
                   activeSection === item.toLowerCase()
-                    ? 'text-[var(--accent)] bg-[rgba(43,138,126,0.08)]'
+                    ? 'text-[var(--accent-teal)] bg-[rgba(43,107,94,0.08)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
@@ -48,7 +48,7 @@ const Navigation: React.FC<NavigationProps> = ({
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden mt-2 bg-white/90 border border-black/[0.04] rounded-2xl overflow-hidden backdrop-blur-xl shadow-[0_8px_30px_rgba(26,35,50,0.08)]">
+        <div className="md:hidden mt-2 bg-[#F7F5F1]/95 border border-black/[0.06] rounded-2xl overflow-hidden backdrop-blur-md shadow-[0_12px_40px_rgba(0,0,0,0.08)]">
           <div className="px-3 py-3 space-y-0.5">
             {navItems.map((item) => (
               <button
@@ -56,7 +56,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={`block w-full text-left px-4 py-2.5 text-sm rounded-xl transition-all duration-200 ${
                   activeSection === item.toLowerCase()
-                    ? 'bg-[rgba(43,138,126,0.08)] text-[var(--accent)]'
+                    ? 'bg-[rgba(43,107,94,0.08)] text-[var(--accent-teal)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.02]'
                 }`}
               >
