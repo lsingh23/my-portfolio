@@ -51,8 +51,16 @@ const Portfolio: React.FC = () => {
       <div className="grain-animated" />
       {/* Grain layer 3 — coarse macro texture (30% multiply) */}
       <div className="grain-coarse" />
-      {/* Grain layer 4 — high-freq dust speckle (12% screen) */}
+      {/* Grain layer 4 — high-freq dust speckle (14% overlay) */}
       <div className="grain-dust" />
+      {/* Grain layer 5 — heavy coarse (50% multiply) */}
+      <div className="grain-heavy" />
+      {/* Grain layer 6 — fine noise (30% overlay) */}
+      <div className="grain-fine" />
+      {/* Grain layer 7 — mid-freq depth (35% multiply) */}
+      <div className="grain-mid" />
+      {/* Grain layer 8 — speckle (16% overlay) */}
+      <div className="grain-speckle" />
 
       {/* Scroll progress bar — 2px mint */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />

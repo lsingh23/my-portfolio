@@ -92,7 +92,7 @@ body {
 
 /* ───────────────────────────────────
    GRAIN LAYER 4 — High-freq static dust
-   2.0 freq, tight speckle, 12% screen
+   2.0 freq, tight speckle, 14% overlay (dark)
    Animated with offset from layer 2
    ─────────────────────────────────── */
 .grain-dust {
@@ -100,8 +100,8 @@ body {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.12;
-  mix-blend-mode: screen;
+  opacity: 0.14;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='gd'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gd)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
@@ -136,49 +136,31 @@ body {
 }
 
 /* ───────────────────────────────────
-   HERO TEXTURE — Heavy local grain
-   Noisy gradient from surface → base,
-   two extra grain layers on top of
-   the global ones for max texture
+   GRAIN LAYER 5 — Full-page coarse grain
+   0.45 freq, 6 octaves, 50% multiply (dark)
+   Previously hero-only, now covers entire page
    ─────────────────────────────────── */
-.hero-texture {
-  position: absolute;
+.grain-heavy {
+  position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
-  overflow: hidden;
-  /* Gradient base: elevated at top → base at bottom, with mint tint at center */
-  background:
-    radial-gradient(
-      ellipse 70% 60% at 40% 40%,
-      rgba(0, 229, 160, 0.05) 0%,
-      transparent 60%
-    ),
-    linear-gradient(
-      180deg,
-      #16161A 0%,
-      #111114 30%,
-      var(--bg-base) 100%
-    );
-}
-
-/* Heavy coarse grain — 0.45 freq, 6 octaves, 50% soft-light */
-.hero-texture::before {
-  content: '';
-  position: absolute;
-  inset: 0;
   opacity: 0.50;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hg)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 512px 512px;
 }
 
-/* Heavy fine noise — 1.4 freq, 30% overlay for dense grit */
-.hero-texture::after {
-  content: '';
-  position: absolute;
+/* ───────────────────────────────────
+   GRAIN LAYER 6 — Full-page fine noise
+   1.4 freq, 30% overlay for dense grit
+   ─────────────────────────────────── */
+.grain-fine {
+  position: fixed;
   inset: 0;
+  z-index: 2;
+  pointer-events: none;
   opacity: 0.30;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hf'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hf)'/%3E%3C/svg%3E");
@@ -186,18 +168,14 @@ body {
   background-size: 256px 256px;
 }
 
-/* Extra hero grain divs — additional layers stacked in JSX */
-.hero-grain-extra {
-  position: absolute;
+/* ───────────────────────────────────
+   GRAIN LAYER 7 — Full-page mid-freq depth
+   0.85 freq, 35% multiply
+   ─────────────────────────────────── */
+.grain-mid {
+  position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Mid-freq grain — 0.85 freq, 35% multiply for depth */
-.hero-grain-mid {
-  position: absolute;
-  inset: 0;
+  z-index: 2;
   pointer-events: none;
   opacity: 0.35;
   mix-blend-mode: multiply;
@@ -206,28 +184,20 @@ body {
   background-size: 512px 512px;
 }
 
-/* Speckle dust — 2.5 freq, 20% screen for bright specks */
-.hero-grain-speckle {
-  position: absolute;
+/* ───────────────────────────────────
+   GRAIN LAYER 8 — Full-page speckle
+   2.5 freq, 16% overlay (dark)
+   ─────────────────────────────────── */
+.grain-speckle {
+  position: fixed;
   inset: 0;
+  z-index: 3;
   pointer-events: none;
-  opacity: 0.20;
-  mix-blend-mode: screen;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='hs'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23hs)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
-}
-
-/* Bottom edge fade — blends hero texture into bg-base */
-.hero-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(to bottom, transparent, var(--bg-base));
 }
 
 /* ───────────────────────────────────
