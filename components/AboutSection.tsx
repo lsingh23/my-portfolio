@@ -11,14 +11,14 @@ const AboutSection: React.FC = () => {
 
   return (
     <section id="about" className="py-[140px] px-6 md:px-12">
-      <div className="max-w-[760px] mx-auto">
+      <div className="max-w-[720px] mx-auto">
         <p className="section-label mb-8">About</p>
 
-        <h2 className="headline text-[clamp(1.5rem,4vw,1.75rem)] mb-6">
+        <h2 className="headline-sub text-[clamp(28px,4vw,36px)] mb-6">
           Software engineer building production web apps &amp; AI-powered solutions.
         </h2>
 
-        <p className="text-[var(--text-secondary)] leading-[1.75] text-[15px] mb-16">
+        <p className="text-[var(--text-secondary)] leading-[1.75] text-[17px] mb-16">
           3+ years of experience across the full stack. Currently a Founding Engineer
           at Kindgi, where I architect and develop AI-driven applications using React,
           Next.js, and TypeScript. My work spans from frontend development with React
@@ -28,7 +28,7 @@ const AboutSection: React.FC = () => {
         <p className="section-label mb-5">Technologies</p>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
-            <span key={skill} className="tag">
+            <span key={skill} className="tech-pill">
               {skill}
             </span>
           ))}

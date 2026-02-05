@@ -43,12 +43,14 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen relative">
-      {/* Warm center glow under grain */}
-      <div className="warm-glow" />
-      {/* Heavy global grain — kraft paper texture */}
+      {/* Void glow — subtle mint radial */}
+      <div className="void-glow" />
+      {/* Grain layer 1 — global film grain */}
       <div className="grain-global" />
+      {/* Grain layer 2 — animated micro-grain */}
+      <div className="grain-animated" />
 
-      {/* Scroll progress bar */}
+      {/* Scroll progress bar — 2px mint */}
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
       {/* Content */}
@@ -61,15 +63,10 @@ const Portfolio: React.FC = () => {
         />
         <main>
           <HeroSection scrollToSection={scrollToSection} />
-          <div className="section-divider" />
           <AboutSection />
-          <div className="section-divider" />
           <ExperienceSection />
-          <div className="section-divider" />
           <ProjectsSection />
-          <div className="section-divider" />
           <EducationSection />
-          <div className="section-divider" />
           <ContactSection />
         </main>
         <Footer />

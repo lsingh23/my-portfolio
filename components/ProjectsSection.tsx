@@ -1,7 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
-
-const projectBarColors = ['card-bar-teal', 'card-bar-slate', 'card-bar-terra', 'card-bar-slate'];
+import { ArrowUpRight, Code2 } from 'lucide-react';
 
 const ProjectsSection: React.FC = () => {
   const projects = [
@@ -10,24 +8,28 @@ const ProjectsSection: React.FC = () => {
       subtitle: 'Real-Time Collaborative Grid System',
       description: 'Distributed multi-user digital refrigerator tiles for household notes, todos, and bill management. Real-time multi-client app with WebSockets, CRDTs (Automerge) for conflict-free, offline-first state synchronization.',
       tech: ['React', 'TypeScript', 'Redux', 'WebSockets', 'Automerge', 'PostgreSQL', 'Node.js'],
+      featured: true,
     },
     {
       title: 'Movie Recommendation System',
       subtitle: 'ML-Powered Content Discovery',
       description: 'Machine learning-based recommendation system with content-based filtering across a full stack application.',
       tech: ['Machine Learning', 'Full Stack', 'Content Filtering'],
+      featured: false,
     },
     {
       title: 'Social Media App',
       subtitle: 'Full-Featured MERN Application',
       description: 'Full-featured social media application with CRUD functionalities built on the MERN stack.',
       tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+      featured: false,
     },
     {
       title: 'ATM Database System',
       subtitle: 'Database Operations Simulator',
       description: 'Database project simulating ATM operations using SQL with system analysis.',
       tech: ['SQL', 'Database Design', 'System Analysis'],
+      featured: false,
     }
   ];
 
@@ -51,39 +53,53 @@ const ProjectsSection: React.FC = () => {
 
   return (
     <section id="projects" className="py-[140px] px-6 md:px-12">
-      <div className="max-w-[760px] mx-auto">
+      <div className="max-w-[1000px] mx-auto">
         <p className="section-label mb-8">Projects</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`card ${projectBarColors[index % projectBarColors.length]} p-8 ${index === 0 ? 'md:col-span-2' : ''}`}
+              className={`card ${project.featured ? 'card-accent-orange md:col-span-2' : 'card-accent'}`}
             >
               <div className="relative z-10">
-                <div className="mb-3">
-                  <h3 className="headline text-base">
-                    {project.title}
-                  </h3>
-                  <p className="text-[var(--text-muted)] text-xs mt-1">{project.subtitle}</p>
+                {/* Screenshot area */}
+                <div className="screenshot-area h-32 flex items-center justify-center m-4 mb-0">
+                  <Code2 size={28} className="text-[var(--text-muted)]" />
                 </div>
-                <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tech.map((tech, i) => (
-                    <span key={i} className="tag-sm">
-                      {tech}
-                    </span>
-                  ))}
+
+                <div className="p-8 pt-5">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h3 className="headline text-base">
+                        {project.title}
+                      </h3>
+                      <p className="text-[var(--text-muted)] text-xs mt-1">{project.subtitle}</p>
+                    </div>
+                    {project.featured && (
+                      <span className="text-[10px] font-medium text-[var(--accent-orange)] bg-[rgba(255,107,53,0.08)] border border-[rgba(255,107,53,0.15)] rounded px-2 py-0.5 shrink-0 ml-3" style={{ fontFamily: "'Geist Mono', monospace" }}>
+                        FEATURED
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-[var(--text-secondary)] mb-5 leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((tech, i) => (
+                      <span key={i} className="tech-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Certificates — subtle rows, not full cards */}
-        <div className="mt-16">
+        {/* Certificates — text rows, not cards */}
+        <div className="mt-20 max-w-[720px]">
           <p className="section-label mb-6">Certificates</p>
           <div>
             {certificates.map((cert, index) => (
@@ -92,15 +108,15 @@ const ProjectsSection: React.FC = () => {
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cert-row group"
+                className="text-row group"
               >
                 <div className="flex items-baseline gap-3 min-w-0">
-                  <span className="text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-teal)] transition-colors truncate">
+                  <span className="text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-mint)] transition-colors truncate">
                     {cert.name}
                   </span>
                   <span className="text-xs text-[var(--text-muted)] shrink-0">{cert.issuer}</span>
                 </div>
-                <ArrowUpRight size={14} className="cert-arrow text-[var(--text-muted)] shrink-0 ml-3" />
+                <ArrowUpRight size={14} className="row-arrow text-[var(--text-muted)] shrink-0 ml-3" />
               </a>
             ))}
           </div>
